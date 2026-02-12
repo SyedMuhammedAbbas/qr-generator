@@ -115,6 +115,30 @@ body {
   border: 1px solid #e8eaed;
 }
 
+.qr-style-section {
+  margin-bottom: 32px;
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 22px 24px;
+  border: 1px solid #e8eaed;
+}
+
+.qr-style-header {
+  margin-bottom: 16px;
+}
+
+.qr-style-header h4 {
+  font-size: 15px;
+  font-weight: 600;
+  color: #2d3748;
+  margin-bottom: 4px;
+}
+
+.qr-style-header p {
+  font-size: 12px;
+  color: #a0aec0;
+}
+
 .form-header {
   margin-bottom: 20px;
   padding-bottom: 12px;
@@ -143,6 +167,26 @@ body {
   display: flex;
   flex-direction: column;
   gap: 6px;
+}
+
+.color-input-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.color-input {
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border-radius: 8px;
+  border: 1px solid #e2e8f0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.color-hex-input {
+  flex: 1;
 }
 
 .form-group label {

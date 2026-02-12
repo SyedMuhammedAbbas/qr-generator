@@ -18,6 +18,8 @@ const QR_TYPES = {
 const QRCodeGenerator = () => {
   const qrCodeRef = useRef(null);
   const [qrType, setQrType] = useState("url");
+  const [qrColor, setQrColor] = useState("#000000");
+  const [qrBgColor, setQrBgColor] = useState("#ffffff");
 
   // URL state
   const [url, setUrl] = useState("");
@@ -215,7 +217,7 @@ const QRCodeGenerator = () => {
     canvas.height = size;
 
     img.onload = () => {
-      ctx.fillStyle = "white";
+      ctx.fillStyle = qrBgColor || "white";
       ctx.fillRect(0, 0, size, size);
       ctx.drawImage(img, padding, padding, 256, 256);
 
@@ -760,6 +762,54 @@ const QRCodeGenerator = () => {
           {renderForm()}
         </div>
 
+        {/* QR Style Section */}
+        <div className="qr-style-section">
+          <div className="qr-style-header">
+            <h4>QR Style</h4>
+            <p>Customize the colors of your QR code</p>
+          </div>
+          <div className="form-row">
+            <div className="form-group">
+              <label>QR Color</label>
+              <div className="color-input-wrapper">
+                <input
+                  type="color"
+                  className="color-input"
+                  value={qrColor}
+                  onChange={(e) => setQrColor(e.target.value)}
+                  aria-label="QR foreground color"
+                />
+                <input
+                  type="text"
+                  className="form-input color-hex-input"
+                  value={qrColor}
+                  onChange={(e) => setQrColor(e.target.value)}
+                  placeholder="#000000"
+                />
+              </div>
+            </div>
+            <div className="form-group">
+              <label>Background Color</label>
+              <div className="color-input-wrapper">
+                <input
+                  type="color"
+                  className="color-input"
+                  value={qrBgColor}
+                  onChange={(e) => setQrBgColor(e.target.value)}
+                  aria-label="QR background color"
+                />
+                <input
+                  type="text"
+                  className="form-input color-hex-input"
+                  value={qrBgColor}
+                  onChange={(e) => setQrBgColor(e.target.value)}
+                  placeholder="#ffffff"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+
         {/* QR Code Display */}
         {qrCodeValue && (
           <div className="qr-display-section">
@@ -769,6 +819,8 @@ const QRCodeGenerator = () => {
                 size={280}
                 style={{ height: "auto", maxWidth: "100%", width: "100%" }}
                 viewBox={`0 0 280 280`}
+                fgColor={qrColor}
+                bgColor={qrBgColor}
               />
             </div>
 
